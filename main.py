@@ -18,10 +18,10 @@ class Paddle(object):
 		key = pygame.key.get_pressed()
 		if key[pygame.K_UP]:
 			self.speed_y = -2
-		else:
-			self.speed_y = 0
 		if key[pygame.K_DOWN]:
 			self.speed_y = 2
+		else:
+			self.speed_y = 0
 
 class Ball(object):
 	def __init__(self):
