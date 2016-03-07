@@ -1,5 +1,6 @@
 # Python-Pong
-#
-#Tom how does i add code or download code?
-#
-#
+
+
+I will be a pong game writed on python - pygame 
+
+
