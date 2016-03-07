@@ -29,14 +29,15 @@ class Ball(object):
 	def update(self):
 		# Now, instead of checking the values of FREEX and FREEY
 		# We can just add the speed of the ball onto its position
-		self.ball_x += self.speed_x
-		self.ball_y += self.speed_y
+		self.rect.x += self.speed_x
+		self.rect.y += self.speed_y
 		# Remember, that happens every frame, so if speed_x = 1 then
 		# the ball will move right by 1 every frame!
 		
 		# Move the rectangle
-		self.rect.x = self.ball_x
-		self.rect.y = self.ball_y
+		#self.rect.x = self.speed_x
+		#self.rect.y = self.speed_y
+
 
 	def collions(self):
 		if self.rect.colliderect(paddle.rect):
