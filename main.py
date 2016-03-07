@@ -22,25 +22,31 @@ class Ball(object):
 		self.ball_x = WIDTH/2
 		self.ball_y = HEIGHT/2
 
+		# Not using FREEX anymore, instead using speed_x and speed_y
+		self.speed_x = -2
+		self.speed_y = 0
 
 	def update(self):
+		# Now, instead of checking the values of FREEX and FREEY
+		# We can just add the speed of the ball onto its position
+		self.ball_x += self.speed_x
+		self.ball_y += self.speed_y
+		# Remember, that happens every frame, so if speed_x = 1 then
+		# the ball will move right by 1 every frame!
+		
+		# Move the rectangle
 		self.rect.x = self.ball_x
 		self.rect.y = self.ball_y
-		FREEX = True
-		FREEY = True
-		if FREEX == True:
-			self.ball_x -= 1
 
-		self.ball_y += 0
-		print(self.ball_y)
 	def collions(self):
-		# if self.ball_y > HEIGHT:
-		# 	self.ball_y -=10
-		# 	print(self.ball_y)
-
 		if self.rect.colliderect(paddle.rect):
-			FREEX = False
-			self.ball_x += 1
+			# Now, here, instead of doing anything with FREEX
+			# we can just reverse the speed of the ball, to make it
+			# go the other way.
+			self.speed_x = -self.speed_x
+			self.speed_y = -self.speed_y
+
+
 WIDTH = 640
 HEIGHT = 320
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
