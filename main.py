@@ -19,31 +19,20 @@ class Paddle(object):
 class Ball(object):
 	def __init__(self):
 		self.rect = pygame.Rect(WIDTH/2, HEIGHT/2, 16, 16)
-		self.ball_x = WIDTH/2
-		self.ball_y = HEIGHT/2
 
-		# Not using FREEX anymore, instead using speed_x and speed_y
 		self.speed_x = -2
 		self.speed_y = 0
 
 	def update(self):
-		# Now, instead of checking the values of FREEX and FREEY
-		# We can just add the speed of the ball onto its position
+		# Update rect position
 		self.rect.x += self.speed_x
 		self.rect.y += self.speed_y
-		# Remember, that happens every frame, so if speed_x = 1 then
-		# the ball will move right by 1 every frame!
-		
-		# Move the rectangle
-		#self.rect.x = self.speed_x
-		#self.rect.y = self.speed_y
 
 
 	def collions(self):
 		if self.rect.colliderect(paddle.rect):
-			# Now, here, instead of doing anything with FREEX
-			# we can just reverse the speed of the ball, to make it
-			# go the other way.
+			# When ball hits paddle, need to reverse the direction
+			# it's travelling in
 			self.speed_x = -self.speed_x
 			self.speed_y = -self.speed_y
 
