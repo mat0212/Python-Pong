@@ -2,14 +2,6 @@ import pygame
 import sys
 import random
 pygame.init()
-# def move(self, x, y):
-	# 	if x != 0:
-	# 		self.move_single_axis(x, 0)
-	# 	if y != 0:
-	# 		self.move_single_axis(0, y)
-	# def move_single_axis(self, x, y):
-	# 	self.rect.x += x
-	# 	self.rect.y += y
 class Paddle(object):
 	def __init__(self):
 		self.rect = pygame.Rect(10,0, 10, 100)
@@ -24,10 +16,10 @@ class Paddle(object):
 		key = pygame.key.get_pressed()
 		if key[pygame.K_UP]:
 			self.speed_y = -2
-		else:
-			self.speed_y = 0
 		if key[pygame.K_DOWN]:
 			self.speed_y = 2
+		else:
+			self.speed_y = 0
 
 class Ball(object):
 	def __init__(self):
@@ -65,12 +57,6 @@ while running:
 	for e in pygame.event.get():
 		if e.type == pygame.QUIT:
 			running = False
-	# key = pygame.key.get_pressed()
-	# if key[pygame.K_UP]:
-	# 	paddle.move(0, -2)
-	# if key[pygame.K_DOWN]:
-	# 	paddle.move(0, 2)
-
 	screen.fill((0,0,0))
 	pygame.draw.rect(screen, (255,255,255), ball.rect)
 	ball.update()
