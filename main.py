@@ -20,7 +20,7 @@ class Ball(object):
 		self.rect = pygame.Rect(WIDTH/2, HEIGHT/2, 16, 16)
 
 		self.speed_x = -2
-		self.speed_y = 0
+		self.speed_y = 2
 
 	def update(self):
 		self.rect.x += self.speed_x
@@ -31,6 +31,10 @@ class Ball(object):
 		# Check BOTH paddles for a collision!
 		if self.rect.colliderect(paddle1.rect) or self.rect.colliderect(paddle2.rect):
 			self.speed_x = -self.speed_x
+			self.speed_y = -self.speed_y
+		elif self.rect.y > HEIGHT:
+			self.speed_y = -self.speed_y
+		elif self.rect.y < 0:
 			self.speed_y = -self.speed_y
 	def score(self):
 		self.myfont = pygame.font.SysFont("monospace", 15)
