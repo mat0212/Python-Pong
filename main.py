@@ -42,6 +42,14 @@ class Ball(object):
 		if self.rect.colliderect(paddle1.rect) or self.rect.colliderect(paddle2.rect):
 			self.speed_x = -self.speed_x
 			self.speed_y = -self.speed_y
+	#Why will the text not pop up :/
+	def score(self):
+		self.myfont = pygame.font.SysFont("monospace", 15)
+		self.label = self.myfont.render("Some text!", 1, (255,255,0))
+
+		screen.blit(self.label, (0, 0))
+		print("?")
+
 
 
 WIDTH = 640
@@ -95,6 +103,7 @@ while running:
 	# Separated the render code from the update code
 	ball.update()
 	ball.collions()
+	ball.score()
 	# Remember to update and draw both paddles!
 	paddle1.update()
 	paddle2.update()
