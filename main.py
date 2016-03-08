@@ -15,16 +15,6 @@ class Paddle(object):
 		self.rect.x += self.speed_x
 		self.rect.y += self.speed_y
 
-		# Removed all this code here, moved the keypress code to the main loop
-
-		# key = pygame.key.get_pressed()
-		# if key[pygame.K_UP]:
-		# 	self.speed_y = -2
-		# elif key[pygame.K_DOWN]:
-		# 	self.speed_y = 2
-		# else:
-		# 	self.speed_y = 0
-
 class Ball(object):
 	def __init__(self):
 		self.rect = pygame.Rect(WIDTH/2, HEIGHT/2, 16, 16)
@@ -47,7 +37,6 @@ class Ball(object):
 		self.label = self.myfont.render("                            Score 0:0", 1, (255,255,0))
 
 		screen.blit(self.label, (0, 0))
-		print("?")
 
 
 
