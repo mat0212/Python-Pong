@@ -14,10 +14,12 @@ class Paddle(object):
 	def update(self):
 		self.rect.x += self.speed_x
 		self.rect.y += self.speed_y
-
+		
 class Ball(object):
 	def __init__(self):
 		self.rect = pygame.Rect(WIDTH/2, HEIGHT/2, 16, 16)
+		self.P1_score = 0
+		self.P2_score = 0
 
 		self.speed_x = -2
 		self.speed_y = 2
@@ -25,7 +27,7 @@ class Ball(object):
 	def update(self):
 		self.rect.x += self.speed_x
 		self.rect.y += self.speed_y
-
+		
 
 	def collions(self):
 		# Check BOTH paddles for a collision!
@@ -36,11 +38,20 @@ class Ball(object):
 			self.speed_y = -self.speed_y
 		elif self.rect.y < 0:
 			self.speed_y = -self.speed_y
+		elif self.rect.x < 0:
+			self.P2_score += 1
+			self.rect.x = WIDTH/2
+			self.rect.y = HEIGHT/2
+		elif self.rect.x > 640:
+			self.P1_score += 1
+			self.rect.x = WIDTH/2
+			self.rect.y = HEIGHT/2
 	def score(self):
 		self.myfont = pygame.font.SysFont("monospace", 15)
-		self.label = self.myfont.render("                            Score 0:0", 1, (255,255,0))
-
+		self.label = self.myfont.render("         P1Score = " + str(self.P1_score), 1, (18,15,210))
+		self.label2 = self.myfont.render("                                           P2Score = " + str(self.P2_score), 1, (92,19,189))
 		screen.blit(self.label, (0, 0))
+		screen.blit(self.label2, (0,0))
 
 
 
