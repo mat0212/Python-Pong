@@ -31,18 +31,37 @@ class Ball(object):
 
 	def collions(self):
 		# Check BOTH paddles for a collision!
-		if self.rect.colliderect(paddle1.rect) or self.rect.colliderect(paddle2.rect):
+		# if self.rect.colliderect(paddle1.rect) or self.rect.colliderect(paddle2.rect):
+		# 	self.speed_x = -self.speed_x
+		# 	self.speed_y = -self.speed_y
+		if self.rect.colliderect(paddle1.rect):
+			self.speed_x -= 1
+			self.speed_y -= 1
 			self.speed_x = -self.speed_x
 			self.speed_y = -self.speed_y
+			print(self.speed_x)
+			print(self.speed_y)
+		if self.rect.colliderect(paddle2.rect):	
+			self.speed_x += 1
+			self.speed_y += 1
+			self.speed_y = -self.speed_y
+			self.speed_x = -self.speed_x
+			print(self.speed_x)
+			print(self.speed_y)
 		elif self.rect.y > HEIGHT:
 			self.speed_y = -self.speed_y
 		elif self.rect.y < 0:
 			self.speed_y = -self.speed_y
 		elif self.rect.x < 0:
+			self.speed_x = 2
+			self.speed_x = -2
+			self.speed_y = 2
 			self.P2_score += 1
 			self.rect.x = WIDTH/2
 			self.rect.y = HEIGHT/2
 		elif self.rect.x > 640:
+			self.speed_x = -2
+			self.speed_y = 2
 			self.P1_score += 1
 			self.rect.x = WIDTH/2
 			self.rect.y = HEIGHT/2
